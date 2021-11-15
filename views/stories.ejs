@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Wildlife | Blogs</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</head>
+
+<body>
+
+    <%- include('partials/navbar.ejs') %>
+        <!--  ************************* Page Title Starts Here ************************** -->
+        <div class="page-nav no-margin row">
+            <div class="container">
+                <div class="row">
+                    <h2>Our Blog</h2>
+                    <ul>
+                        <li> <a href="/home"><i class="fas fa-home"></i> Home</a></li>
+                        <li><i class="fas fa-angle-double-right"></i> Stories</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--  ************************* Blog Starts Here ************************** -->
+        <div class="blog">
+
+            <div class="container">
+                <div class="row">
+                    <%blogs.forEach(blog=>{ %>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="blog-singe no-margin row">
+                                <div class="col-sm-5 blog-img-tab">
+                                    <img src="<%= blog.url %>" alt="">
+                                </div>
+                                <div class="col-sm-7 blog-content-tab">
+                                    <h2>
+                                        <%= blog.title%>
+                                    </h2>
+                                    <p class="blog-desic">
+                                        <%= blog.small %>
+                                    </p>
+                                    <a href="/stories/<%= blog.title %>">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <% })%>
+                </div>
+            </div>
+        </div>
+
+        <!-- ######## Blog End ####### -->
+
+        <%- include('partials/footer.ejs') %>
+
+</body>
+<script>
+    axios.post('/order').then(info => {
+        var options = {
+            "key": `<%= keyId %>`,
+            "name": "Save Thy Planet Corp",
+            "description": "Transaction",
+            "order_id": info.data.id,
+            "callback_url": "/success",
+            "notes": {
+                "address": "Save-Thy-Planet Corporate Office"
+            }
+        }
+        var rzp1 = new Razorpay(options);
+        document.getElementById('rzp-button1').onclick = (e) => {
+            rzp1.open();
+            e.preventDefault();
+        }
+    })
+</script>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+    integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+    crossorigin="anonymous"></script>
+<script src="js/jquery-scrolltofixed-min.js"></script>
+<script src="js/script.js"></script>
+
+</html>

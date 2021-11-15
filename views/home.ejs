@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Endangered Species | List</title>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.css">
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+    <%- include('partials/navbar.ejs') %>
+        <div class="slider">
+            <div class="owl-carousel ">
+                <%animals.forEach(animal=>{%>
+                    <div class="slider-img">
+                        <div class="item">
+                            <div class="slider-img"><img src="<%=animal.url%>" alt=""></div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
+                                        <div class="animated bounceInDown slider-captions">
+                                            <h1 class="slider-title">
+                                                <%=animal.name %>
+                                            </h1>
+                                            <p class="slider-text hidden-xs">
+                                                <%= animal.desc%>
+                                            </p>
+                                            <a class="nav-btn">
+                                                <button class="btn btn-success" id="rzp-button2">Take Action</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}) %>
+            </div>
+        </div>
+
+        <!-- ################# Slider Starts Here#######################--->
+
+        <div class="about-us container-fluid">
+            <div class="container">
+                <div class="row session-title">
+                    <h2>About Us</h2>
+                    <p>We're a driven bunch of individuals who are fighting to save our endangered species.</p>
+                </div>
+                <div class="row natur-row no-margin w-100">
+                    <div class="text-part col-md-6">
+                        <h2>We Are Animal Lovers</h2>
+                        <p>Ecosystems are groups of plants and animals that are found in the same area and interact with
+                            each other. These interactions make up and maintain the environments we know today – like
+                            rainforests, mountains and savannahs. But the balance within an ecosystem isn’t always easy
+                            to maintain; the loss of one species
+                            often triggers the loss of others. </p>
+                        <p>A well-balanced ecosystem maintains the health of the environment. This ensures that human
+                            beings have access to clean air and water, and fertile land for agriculture.
+
+                            It goes without saying that clean air and water improves our quality of life, and fertile
+                            land for agriculture ensures that we can produce enough food for consumption. A balanced
+                            ecosystem also provides us with plants that have medicinal properties. </p>
+                        <p> So, when ecosystems aren’t maintained, our health can be affected too. That’s why, when we
+                            add to the conservation of endangered species, we're also contributing towards humans’
+                            well-being.</p>
+                    </div>
+                    <div class="image-part col-md-6">
+                        <img src="/images/about.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- #################  LookingFor #######################--->
+
+        <div class="lloking-for container-fluid">
+            <div class="inn-lay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 natur-col text-center mx-auto">
+                            <h2>Love animals?</h2>
+                            <h4>We're open to all the help we can get</h4>
+                            <button class="btn btn-light" id="rzp-button3">Save a Life Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="our-services container-fluid">
+            <div class="container">
+                <div class="row session-title">
+                    <h2>What Are We Doing ?</h2>
+                    <p>We're actively working with volunteers to safeguard our wildlife.</p>
+                </div>
+                <div class="service-row row">
+                    <div class="col-md-4">
+                        <div class="service-col">
+                            <img src="/images/service/help.jpg" alt="">
+                            <div class="serv-detail">
+                                <i class="fas fa-hands-helping"></i>
+                                <h4>Volunteering Activities</h4>
+                                <p>By volunteering at the Wildlife Rescue Facilities, we're making major
+                                    contributions to the welfare of endangered species around the world.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="service-col">
+                            <img src="/images/service/conserve.jpg" alt="">
+                            <div class="serv-detail">
+                                <i class="fas fa-people-carry"></i>
+                                <h4>Ecosystem Conservation</h4>
+                                <p>Explore the best environmental volunteer opportunities below and discover how you can
+                                    make a difference!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="service-col">
+                            <img src="/images/service/protect.jpg" alt="">
+                            <div class="serv-detail">
+                                <i class="fas fa-user-shield"></i>
+                                <h4>Fighting against Poaching</h4>
+                                <p>Back a Ranger. Donate through our Help a Ranger Project to benefit the men and
+                                    women who fight against animal poachers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('partials/footer.ejs') %>
+</body>
+<script>
+    axios.post('/order').then(info => {
+        var options = {
+            "key": `<%= keyId %>`,
+            "name": "Save Thy Planet Corp",
+            "description": "Transaction",
+            "order_id": info.data.id,
+            "callback_url": "/success",
+            "notes": {
+                "address": "Save-Thy-Planet Corporate Office"
+            }
+        }
+        var rzp1 = new Razorpay(options);
+        document.getElementById('rzp-button1').onclick = (e) => {
+            rzp1.open();
+            e.preventDefault();
+        }
+        document.getElementById('rzp-button3').onclick = (e) => {
+            rzp1.open();
+            e.preventDefault();
+        }
+    })
+</script>
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+    integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+    crossorigin="anonymous"></script>
+<script src="/js/jquery-scrolltofixed-min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/script.js"></script>
+
+</html>
